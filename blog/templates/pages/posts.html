@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Blog | Posts{% endblock title %}
+
+{% block header %}
+<header
+class="masthead"
+style="background-image: url('{% static "assets/img/post-bg.jpg" %}')"
+>
+<div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="post-heading">
+            <h1>Welcome to the Blog</h1>
+            <h2 class="subheading">
+                Her You Can see Latest News & Updates
+            </h2>
+        </div>
+        
+        </div>
+    </div>
+</div>
+</header>
+{% endblock %}
+
+
+<!-- Main Content-->
+
+{% block content %}    
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            
+            <!-- Post preview-->
+            {% for post in posts %}
+            <div class="post-preview">
+            <a href="{% url 'post_detail' post.id %}">
+                <h2 class="post-title">
+                    {{ post.title|default:"Reaching for the Stars" }}
+                </h2>
+                {% if  post.Sub_title %}
+                <h3 class="post-subtitle">
+                P{{ post.Sub_title }}
+                </h3>
+                {% else %}
+                <h3 class="post-subtitle">
+                    No sup title
+                </h3>
+                {% endif %}
+                <p>
+                    {{ post.content }}
+                </p>
+            </a>
+            
+            <p class="post-meta">
+                Posted by
+                <a href="{% url 'blog_about' %}">{{ request.user.username }}</a>
+                on {{ post.created_at|date:"F d, Y" }}
+            </p>
+            </div>
+            <!-- Divider-->
+            <!-- Comment Section -->
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% if post.comments.count  %}
+                        <a href="{% url 'post_detail' post.id %}">
+                            <h3>comments: {{ post.comments.count }}</h3>
+                        </a>
+                    {% else %}
+                        <h3>Ther is No Comments</h3>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+            <hr />
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

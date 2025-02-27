@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}My Blog | Home{% endblock title %}
+<!-- Page Header-->
+{% block header %}
+    {% if page.bg_image %}
+        <header
+        class="masthead"
+        style="background-image: url('{{ page.bg_image.url  }}')">
+    {% else %}
+    <header
+    class="masthead"
+    style="background-image: url('{% static "assets/img/home-bg.jpg" %}')">
+    {% endif %}
+        <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+                <h1>{{ page.Title | default:"Clean Blog" }}</h1>
+                <span class="subheading">{{ page.Sub_title | default:"A Blog Theme by Start Bootstrap" }}</span>
+            </div>
+            </div>
+        </div>
+        </div>
+    </header>
+{% endblock header %}
+
+<!-- Main Content-->
+
+{% block content %}    
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            
+            <!-- Post preview-->
+            {% for post in posts %}
+            <div class="post-preview">
+            <a href="{% url 'post_detail' post.id %}">
+                <h2 class="post-title">
+                    {{ post.title|default:"Reaching for the Stars" }}
+                </h2>
+                {% if  post.Sub_title %}
+                <h3 class="post-subtitle">
+                P{{ post.Sub_title }}
+                </h3>
+                {% else %}
+                <h3 class="post-subtitle">
+                    No sup title
+                </h3>
+                {% endif %}
+                <p>
+                    {{ post.content|truncatewords:30 }}
+                </p>
+            </a>
+            
+            <p class="post-meta">
+                Posted by
+                <a href="{% url 'blog_about' %}">{{ username }}</a>
+                on {{ post.created_at|date:"F d, Y" }}
+            </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+
+            {% endfor %}
+
+            <!-- Pager-->
+            {% if posts.has_previous %}
+            <div class="d-flex justify-content-end mb-4">
+            <a class="btn btn-primary text-uppercase" href="?page={{ posts.previous_page_number }}"
+                >Older Posts →</a
+            >
+            </div>
+            {% endif %}
+            <div class="d-flex justify-content-end mb-4">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+            {% if posts.has_next %}
+            <a class="btn btn-primary text-uppercase" href="?page={{ posts.next_page_number }}">next</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

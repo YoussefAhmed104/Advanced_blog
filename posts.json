@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Introduction to Python",
+        "sub_title": "Learn the Basics",
+        "content": "Python is an easy-to-learn yet powerful programming language used in web development, data analysis, and artificial intelligence."
+    },
+    {
+        "title": "HTML Basics",
+        "sub_title": "Building Web Pages",
+        "content": "HTML is the standard markup language for creating web pages, defining elements like headings, paragraphs, and images."
+    },
+    {
+        "title": "What is Django?",
+        "sub_title": "A Powerful Web Framework",
+        "content": "Django is a high-level Python web framework that promotes rapid development and clean, pragmatic design."
+    },
+    {
+        "title": "The Importance of SQL",
+        "sub_title": "Managing Databases",
+        "content": "SQL is a language used for managing and querying relational databases like SQLite and MySQL."
+    },
+    {
+        "title": "Learn CSS",
+        "sub_title": "Styling Web Pages",
+        "content": "CSS is used to style web pages, allowing you to change colors, sizes, and layouts to improve design."
+    },
+    {
+        "title": "JavaScript for Beginners",
+        "sub_title": "Making Websites Interactive",
+        "content": "JavaScript makes web pages dynamic by allowing interactive elements without reloading the page."
+    },
+    {
+        "title": "What is Flask?",
+        "sub_title": "A Lightweight Web Framework",
+        "content": "Flask is a minimalistic Python web framework known for its simplicity and ease of use."
+    },
+    {
+        "title": "Git Basics",
+        "sub_title": "Version Control",
+        "content": "Git is a version control system that helps developers track and manage changes in code repositories."
+    },
+    {
+        "title": "REST APIs Explained",
+        "sub_title": "Building Scalable Services",
+        "content": "REST APIs allow communication between different applications using HTTP methods like GET, POST, and DELETE."
+    },
+    {
+        "title": "Understanding Machine Learning",
+        "sub_title": "The Future of AI",
+        "content": "Machine learning is a branch of AI that enables systems to learn from data without explicit programming."
+    },
+    {
+        "title": "Cybersecurity Fundamentals",
+        "sub_title": "Protecting Digital Systems",
+        "content": "Cybersecurity focuses on protecting systems and networks from digital attacks and unauthorized access."
+    },
+    {
+        "title": "React.js Overview",
+        "sub_title": "Building Modern Web Apps",
+        "content": "React.js is a JavaScript library for creating fast and interactive user interfaces using reusable components."
+    },
+    {
+        "title": "The Role of Cloud Computing",
+        "sub_title": "Scalable and Flexible Solutions",
+        "content": "Cloud computing provides on-demand computing resources, enabling businesses to scale efficiently."
+    },
+    {
+        "title": "How Blockchain Works",
+        "sub_title": "Decentralized Technology",
+        "content": "Blockchain is a distributed ledger technology that ensures secure and transparent transactions."
+    },
+    {
+        "title": "Introduction to DevOps",
+        "sub_title": "Bridging Development and Operations",
+        "content": "DevOps is a set of practices that integrate development and IT operations to improve software delivery speed and reliability."
+    }
+]

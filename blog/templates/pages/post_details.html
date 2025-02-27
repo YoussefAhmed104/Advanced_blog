@@ -1,0 +1,104 @@
+{% extends "post_base.html" %}
+{% load static %}
+{% block title %}My Blog | Post{% endblock title %}
+
+
+{% block header %}
+<!-- Page Header-->
+
+{% if post.post_img %}
+<header
+    class="masthead"
+    style="background-image: url('{{  post.post_img.url }}')">
+{% else %}
+<header
+    class="masthead"
+    style="background-image: url('{% static "assets/img/post-bg.jpg" %}')">
+{% endif %}
+
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{ post.title|default:"Reaching for the Stars" }}</h1>
+                    <h2 class="subheading">
+                        {{ post.Sub_title |default:" look mighty small from 150 miles up" }}
+                    </h2>
+                    <span class="meta">
+                    Posted by
+                    <a href="#!">Start Bootstrap</a>
+                    on {{ post.created_at|date:"F d, Y" }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+                {{ post.content|linebreaks }}
+            <p>
+        </div>
+        </div>
+    </div>
+    </article>
+    <hr />
+{% endblock content %}
+
+{% block Comment %}
+    <!-- Comment Section -->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+    <h3>comments: {{ comments.count }}</h3>
+    {% for comment in post.comments.all %}
+        <div class="comment-box">
+            <strong>{{ comment.name }}</strong> - <small>{{ comment.created_at }}</small>
+            <p>{{ comment.content }}</p>
+        </div>
+        <hr />
+    {% empty %}
+        <p>There is no comments yet . </p>
+    {% endfor %}
+    </div>
+    </div>
+    </div>
+    <hr />
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+            <p>
+                Want to get in touch? Fill out the form below to send me a message
+                and I will get back to you as soon as possible!
+            </p>
+            <form id="contactForm" method="POST" action="{% url 'add_comment' post.id%}">
+                {% csrf_token %}
+                <div class="form-floating">
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." required />
+                    <label for="name">Name</label>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="email" name="email" type="email" placeholder="Enter your email..." required />
+                    <label for="email">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" id="message" name="message" placeholder="Enter your message here..." style="height: 12rem" required></textarea>
+                    <label for="message">Comment</label>
+                </div>
+                <br />
+                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">
+                    Comment
+                </button>
+            </form>
+            
+        </div>
+        </div>
+    </main>
+{% endblock Comment %}

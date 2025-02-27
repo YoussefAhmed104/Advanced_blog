@@ -1,1 +1,4 @@
 Advanced_blog/settings.py
+venv
+__pycache__
+db.sqlite3
